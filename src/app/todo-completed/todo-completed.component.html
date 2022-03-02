@@ -1,0 +1,39 @@
+<div class='card'>
+    <div class='card-header'>
+        {{pageTitle}}
+      </div>
+    <div class='card-body'>
+    
+      <div class='table-responsive'>
+        <table class='table'
+             >
+          <thead>
+            <tr>
+            
+              <th>Task Title</th>
+              <th>Task Priority</th>
+            </tr>
+          </thead>
+          <tbody *ngIf='completedTasks.length'>
+            <tr *ngFor='let task of completedTasks'>
+              <td>
+                <a [routerLink]="['/tasks', task.id]">
+                  {{ task.Title }} 
+                </a>
+              </td>
+              <!-- <td>{{ customer.customerDOB | lowercase | convertToSpaces:'-' }}</td> -->
+              <td>{{ task.Priority}}</td>
+        
+          
+          
+              <!-- <td>
+                <pm-star [rating]='product.starRating'
+                         (ratingClicked)='onRatingClicked($event)'>
+                </pm-star>
+              </td> -->
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>

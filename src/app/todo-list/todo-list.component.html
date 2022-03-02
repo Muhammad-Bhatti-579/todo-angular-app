@@ -1,0 +1,60 @@
+<div class='card'>
+    <div class='card-header'>
+      {{pageTitle}}
+    </div>
+    <div class='card-body'>
+    
+      <div class='table-responsive'>
+        <table class='table'
+        *ngIf='tasks.length'
+               >
+          <thead>
+            <tr>
+            
+              <th>Task Title</th>
+              <th>Task Priority</th>
+              <th>Completed? </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor='let task of tasks'>
+              <td>
+                <a [routerLink]="['/tasks', task.id]">
+                  {{ task.Title }} 
+                </a>
+              </td>
+              <!-- <td>{{ customer.customerDOB | lowercase | convertToSpaces:'-' }}</td> -->
+              <td>{{ task.Priority}}</td>
+              <div class="form-group row">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-10">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="completed" [(ngModel)] = "task.Completed" name= "Completed"
+                    (click)='doIfChecked(task.Completed, task)'>
+
+                    <label class="form-check-label" for="completed" >
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <!-- <td>
+                <div class="d-flex justify-content-between align-items-center">
+                        <button class="btn btn-primary" (click)='deleteTask(task.id)'> Delete Task</button>
+                </div>  
+              </td> -->
+          
+              <!-- <td>
+                <pm-star [rating]='product.starRating'
+                         (ratingClicked)='onRatingClicked($event)'>
+                </pm-star>
+              </td> -->
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div *ngIf='errorMessage'
+     class='alert alert-danger'>
+  Error: {{ errorMessage }}
+</div>

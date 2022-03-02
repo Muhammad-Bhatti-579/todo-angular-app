@@ -1,0 +1,54 @@
+<div class="container">
+    <div class='card-header'>
+        {{pageTitle}}
+      </div>
+    
+    <div class="col-md-12 form-wrapper">
+      <div className="alert alert-info" role="alert">
+        Fill the form below to add a new task
+        </div>
+      <div class="row">
+        <div class="col-md-6">
+          <form (ngSubmit)="createTask()" #createForm="ngForm">
+            <div class="form-group">
+              <label for="Title">Title</label>
+              <input type="text" class="form-control" [(ngModel)]="task.Title" name="Title" required>
+            </div>
+            <div class="form-group">
+              <label for="Description">Description</label>
+              <input type="text" class="form-control" [(ngModel)]="task.Description" name="Description" required>
+            </div>
+
+            <div class="form-group">
+                <label for="Priority">Priority</label>
+                <select class="form-control" [(ngModel)] = "task.Priority" name= "Priority" id="Priority" required>
+                  <option>Low</option>
+                  <option>Medium</option>
+                  <option>High</option>
+                </select>
+              </div>
+     
+  
+              <div class="row"  *ngIf="showMsg">
+                <div class="col-xs-12">
+                  <p class="alert alert-success">
+                      <strong>Task Successfully Added!</strong> Please check the tasks list.
+        
+                  </p>
+                </div>
+              </div>
+    
+            <button type="submit" class="btn btn-primary">Submit</button>
+
+          </form>
+        </div>
+      </div>
+      <div class='card-footer'>
+          <button class='btn btn-outline-secondary'
+                  style='width:80px'
+                  (click)='onBack()'>
+            <i class='fa fa-chevron-left'></i> Back
+          </button>
+        </div>
+    </div>
+    </div>  
